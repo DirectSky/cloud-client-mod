@@ -1,0 +1,50 @@
+name: Build Mappings Bundle
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'mappings/servers/**'
+      - 'mappings/assets/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build mappings.json
+        run: |
+          mkdir -p mappings/dist
+          python3 - <<'PY'
+          import json, os, glob
+          
+          servers = {}
+          for path in sorted(glob.glob("mappings/servers/*.json")):
+              with open(path, encoding="utf-8") as f:
+                  data = json.load(f)
+              patterns = data.get("patterns", [])
+              for pattern in patterns:
+                  servers[pattern.lower()] = {
+                      "name": data.get("name", ""),
+                      "patterns": patterns,
+                      "icon": data.get("icon"),
+                      "banner": data.get("banner"),
+                  }
+          
+          bundle = {"version": 1, "servers": servers}
+          with open("mappings/dist/mappings.json", "w", encoding="utf-8") as f:
+              json.dump(bundle, f, indent=2, ensure_ascii=False)
+          print(f"Generated mappings.json with {len(servers)} patterns")
+          PY
+
+      - name: Commit bundle
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add mappings/dist/mappings.json
+          git diff --staged --quiet || git commit -m "chore: rebuild mappings bundle"
+          git push

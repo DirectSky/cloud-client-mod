@@ -4,8 +4,9 @@ import com.mojang.blaze3d.platform.InputConstants;
 import de.Sky.cloudclientmod.config.HudConfig;
 import de.Sky.cloudclientmod.features.FeatureRegistry;
 import de.Sky.cloudclientmod.features.HudRenderer;
-import de.Sky.cloudclientmod.gui.ModMenuScreen;
 import de.Sky.cloudclientmod.gui.HudEditorScreen;
+import de.Sky.cloudclientmod.gui.ModMenuScreen;
+import de.Sky.cloudclientmod.server.ServerMappings;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -30,6 +31,7 @@ public class Main implements ClientModInitializer {
         LOGGER.info("[Cloud Client] Initialisiere Mod...");
 
         HudConfig.load();
+        ServerMappings.init();
         FeatureRegistry.registerAll();
         HudRenderer.init();
 
@@ -39,7 +41,6 @@ public class Main implements ClientModInitializer {
                 GLFW.GLFW_KEY_RIGHT_SHIFT,
                 CATEGORY
         ));
-
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (openMenuKey.consumeClick()) {

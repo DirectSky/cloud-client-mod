@@ -1,0 +1,10 @@
+{
+  "name": "Hypixel",
+  "patterns": [
+    "hypixel.net",
+    "mc.hypixel.net",
+    "*.hypixel.net"
+  ],
+  "icon": "assets/hypixel-icon.png",
+  "banner": "assets/hypixel-banner.png"
+}
