@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "servers": {
+    "hypixel.net": {
+      "name": "Hypixel",
+      "patterns": [
+        "hypixel.net",
+        "mc.hypixel.net",
+        "*.hypixel.net"
+      ],
+      "icon": "assets/hypixel-icon.png",
+      "banner": "assets/hypixel-banner.png"
+    },
+    "mc.hypixel.net": {
+      "name": "Hypixel",
+      "patterns": [
+        "hypixel.net",
+        "mc.hypixel.net",
+        "*.hypixel.net"
+      ],
+      "icon": "assets/hypixel-icon.png",
+      "banner": "assets/hypixel-banner.png"
+    },
+    "*.hypixel.net": {
+      "name": "Hypixel",
+      "patterns": [
+        "hypixel.net",
+        "mc.hypixel.net",
+        "*.hypixel.net"
+      ],
+      "icon": "assets/hypixel-icon.png",
+      "banner": "assets/hypixel-banner.png"
+    }
+  }
+}
