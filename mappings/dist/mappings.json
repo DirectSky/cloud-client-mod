@@ -1,6 +1,15 @@
 {
   "version": 1,
   "servers": {
+    "elementevent.net": {
+      "name": "ElementEvents",
+      "patterns": [
+        "ElementEvent.net",
+        "elementevent.net"
+      ],
+      "icon": "assets/elementevents-icon.png",
+      "banner": "assets/elementevents-banner.png"
+    },
     "hypixel.net": {
       "name": "Hypixel",
       "patterns": [
