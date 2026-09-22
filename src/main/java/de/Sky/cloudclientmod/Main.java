@@ -2,11 +2,13 @@ package de.Sky.cloudclientmod;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import de.Sky.cloudclientmod.config.HudConfig;
+import de.Sky.cloudclientmod.features.DiscordIntegration;
 import de.Sky.cloudclientmod.features.FeatureRegistry;
 import de.Sky.cloudclientmod.features.HudRenderer;
 import de.Sky.cloudclientmod.gui.HudEditorScreen;
-import de.Sky.cloudclientmod.gui.ModMenuScreen;
 import de.Sky.cloudclientmod.server.ServerMappings;
+import de.Sky.cloudclientmod.util.GameLock;
+import de.Sky.cloudclientmod.util.TextureCache;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -35,6 +37,9 @@ public class Main implements ClientModInitializer {
         FeatureRegistry.registerAll();
         HudRenderer.init();
 
+        GameLock.start();
+        DiscordIntegration.init();
+
         openMenuKey = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                 "key.cloudclientmod.open_menu",
                 InputConstants.Type.KEYSYM,
@@ -49,6 +54,9 @@ public class Main implements ClientModInitializer {
                 }
             }
         });
+
+        // TextureCache beim Shutdown aufräumen
+        Runtime.getRuntime().addShutdownHook(new Thread(TextureCache::clearAll));
 
         LOGGER.info("[Cloud Client] Initialisiert.");
     }

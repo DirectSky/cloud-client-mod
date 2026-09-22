@@ -3,7 +3,9 @@
   "minVersion": "0.8",
   "package": "de.Sky.cloudclientmod.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [
+  "refmap": "cloudclientmod.refmap.json",
+  "client": [
+    "ServerListEntryMixin"
   ],
   "injectors": {
     "defaultRequire": 1
