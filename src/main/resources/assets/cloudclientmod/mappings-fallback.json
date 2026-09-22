@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "servers": {
+    "hypixel.net": { "name": "Hypixel" },
+    "mc.hypixel.net": { "name": "Hypixel" },
+    "*.hypixel.net": { "name": "Hypixel" },
+    "2b2t.org": { "name": "2b2t" },
+    "play.cubecraft.net": { "name": "CubeCraft" },
+    "*.cubecraft.net": { "name": "CubeCraft" },
+    "mc.hypixel.net.": { "name": "Hypixel" },
+    "play.wynncraft.com": { "name": "Wynncraft" },
+    "play.pika-network.net": { "name": "PikaNetwork" },
+    "gommehd.net": { "name": "GommeHD" },
+    "*.gommehd.net": { "name": "GommeHD" },
+    "mineplex.com": { "name": "Mineplex" },
+    "play.mineplex.com": { "name": "Mineplex" }
+  }
+}

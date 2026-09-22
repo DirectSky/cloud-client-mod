@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "cloudclientmod",
+  "version": "${version}",
+  "name": "Cloud Client",
+  "description": "Offizielle Cloud Client Mod.",
+  "authors": ["DirectSky"],
+  "contact": {
+    "homepage": "https://github.com/DirectSky/cloud-client-mod",
+    "sources": "https://github.com/DirectSky/cloud-client-mod"
+  },
+  "license": "MIT",
+  "icon": "assets/cloudclientmod/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "de.Sky.cloudclientmod.Main"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
